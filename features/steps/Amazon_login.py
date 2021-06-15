@@ -1,6 +1,8 @@
 from selenium.webdriver.common.by import By
 from behave import given, when, then
 from time import sleep
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 from selenium.webdriver.common.keys import Keys
 
@@ -14,10 +16,14 @@ def signout_check(context):
     expected_nav_text = "Hello, Sign in"
     assert expected_nav_text == nav_text, f'Expected {expected_nav_text}, but got {nav_text}'
 
-
 @when('Click on Orders')
 def click_search(context):
     context.driver.find_element(By.ID, 'nav-orders').click()
+
+@when('Click Sign In from popup')
+def click_sign_in_btn(context):
+    sign_in_btn = context.driver.wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR,'#nav-signin-tooltip .nav-action-inner')))
+    sign_in_btn.click()
 
 @then('Verify Sign in page opened')
 def verify_signin_worked(context):

@@ -7,3 +7,8 @@ Feature: Test Amazon Log in
     When Signed out of page
     And Click on Orders
     Then Verify Sign in page opened
+
+  Scenario: Sign in page can be opened from Sign In popup
+    Given Logged out user opens Amazon page
+    When Click Sign In from popup
+    Then Verify Sign in page opened
