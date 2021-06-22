@@ -18,7 +18,9 @@ def signout_check(context):
 
 @when('Click on Orders')
 def click_search(context):
-    context.driver.find_element(By.ID, 'nav-orders').click()
+    orders_link = context.driver.find_element(By.ID, 'nav-orders')
+    print(orders_link)
+    orders_link.click()
 
 @when('Click Sign In from popup')
 def click_sign_in_btn(context):
@@ -30,3 +32,15 @@ def verify_signin_worked(context):
     actual_result = context.driver.find_element(By.CLASS_NAME,'a-spacing-small').text
     expected_result = 'Sign-In'
     assert expected_result == actual_result, f'Expected {expected_result}, but got {actual_result}'
+
+@then('Verify Sign in popup is clickable')
+def verify_sign_in_popup_clickable(context):
+    context.driver.wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR,'#nav-signin-tooltip .nav-action-inner')))
+
+@when('Wait for {sec_count} sec')
+def sleep_8sec(context, sec_count):
+    sleep(int(sec_count))
+
+@then('Verify Sign in popup disappears')
+def verify_signin_popup_disappears(context):
+    context.driver.wait.until(EC.invisibility_of_element_located((By.CSS_SELECTOR, '#nav-signin-tooltip .nav-action-inner')))
