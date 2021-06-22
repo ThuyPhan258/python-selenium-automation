@@ -10,7 +10,7 @@ def open_amazon_product(context):
 
 @then('Verify user can click through colors')
 def verify_can_loop_thru_colors(context):
-    expected_color = ['Black', 'Blue', 'Burgundy', 'Caramel','Gray', 'Green', 'Pink', 'White', 'Yellow']
+    expected_color = ['Black', 'Blue', 'Burgundy', 'Caramel','Gray', 'Green', 'Khaki', 'White', 'Yellow']
     color_options = context.driver.find_elements(By.CSS_SELECTOR, "#variation_color_name li")
 
     for i in range(len(color_options)):
