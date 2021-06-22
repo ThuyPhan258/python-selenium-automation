@@ -1,6 +1,6 @@
-# Created by huy at 6/20/21
-Feature: # Enter feature name here
-  # Enter feature description here
+# Created by thuy at 6/20/21
+Feature: Test for wholefoods
 
-  Scenario: # Enter scenario name here
-    # Enter steps here
+  Scenario: Wholefoods products have regular prices and names
+    Given Open Amazon wholefoods page
+    Then Verify that wholefood products have regular price and names
