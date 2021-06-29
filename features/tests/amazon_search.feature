@@ -1,6 +1,5 @@
 # Created by thuy at 5/24/21
 Feature: Test Amazon Search
-  # Enter feature description here
 
   Scenario: User can search for a product
     Given Open Amazon page

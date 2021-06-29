@@ -13,7 +13,7 @@ def open_invalid_page(context):
 
 @when('Store original window')
 def store_window(context):
-    original_window = context.driver.current_window_handle
+    context.original_window = context.driver.current_window_handle
 
 @when('Click on the dog image')
 def click_dog_image(context):
@@ -28,7 +28,7 @@ def switch_windown(context):
 
 @when('Return to original window')
 def return_original_window(context):
-    context.driver.switch_to_window(context.original_window)
+     context.driver.switch_to_window(context.original_window)
 
 @then('Verify Amazon url')
 def verify_Amazon__base_url(context):

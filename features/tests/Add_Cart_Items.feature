@@ -1,9 +1,8 @@
 # Created by thuy at 6/6/21
 Feature: Verify number of items in Amazon Cart list
-  # Enter feature description here
 
   Scenario: Check the number of items in the cart
-    Given Open Amazon webpage
+    Given User opens Amazon page
     When Click on the amazon search icon
     When Search for pen
     When Click on first product
