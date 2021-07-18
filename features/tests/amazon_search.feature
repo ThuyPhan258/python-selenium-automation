@@ -11,3 +11,10 @@ Feature: Test Amazon Search
   Scenario: User can select blouse colors
     Given Open Amazon product B081YS2F7N page
     Then Verify user can click through colors
+
+
+  Scenario: User can select and search in a department
+    Given Open Amazon page
+    When Select department by alias stripbooks
+    And Search for Faust
+    Then Verify books department is selected

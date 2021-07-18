@@ -17,14 +17,28 @@ def search_for_product(context, product_name):
     context.app.header.input_search(product_name)
     context.app.header.click_search()
 
+@when('Move mouse over flag icon')
+def hover_flag_icon(context):
+    context.app.header.hover_flag_icon()
+    sleep(10)
+
+@when('Select department by alias {alias}')
+def select_department(context, alias):
+    context.app.header.select_department(alias)
+
+@then('Verify books department is selected')
+def verify_books_department(context):
+    context.app.search_results_page.verify_books_department()
+
 @when('Click on first product')
 def click_first_product(context):
     # links = context.driver.find_elements(By.XPATH,"//h2[@class='a-size-mini a-spacing-none a-color-base s-line-clamp-4']/a")
     # links[0].click()
 
-    LINKS = (By.XPATH,"//h2[@class='a-size-mini a-spacing-none a-color-base s-line-clamp-4']/a")
-    e = context.app.header.find_elements(*LINKS)
-    e[0].click()
+    # LINKS = (By.XPATH,"//h2[@class='a-size-mini a-spacing-none a-color-base s-line-clamp-4']/a")
+    # e = context.app.header.find_elements(*LINKS)
+    # e[0].click()
+    context.app.search_results_page.click_first_product()
 
 @when('Click on Add to Cart button')
 def click_Add_to_Cart(context):
@@ -42,5 +56,10 @@ def verify_cart_count(context, expected_count):
     # print('Items in cart count:', items_count)
     # assert items_count == str(expected_count), f'Expected {expected_count}, but got {items_count}'
 
-    CART_COUNT = (By.ID, 'nav-cart-count')
-    context.app.header.verify_text(str(1), *CART_COUNT)
+    # CART_COUNT = (By.ID, 'nav-cart-count')
+    # context.app.header.verify_text(str(1), *CART_COUNT)
+    context.app.header.verify_cart_count(expected_count)
+
+@then('Spanish language selection is visible')
+def verify_spanish_language_present(context):
+    context.app.header.verify_spanish_language_present()

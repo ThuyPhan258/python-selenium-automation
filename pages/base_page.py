@@ -24,13 +24,13 @@ class Page:
         self.driver.get(url)
 
     def wait_for_element_click(self, *locator):
-        self.wait.until(EC.element_to_be_clickable(locator))
+        self.driver.wait.until(EC.element_to_be_clickable(locator))
 
     def wait_for_element_disappear(self, *locator):
-        self.wait.until(EC.invisibility_of_element_located(locator))
+        self.driver.wait.until(EC.invisibility_of_element_located(locator))
 
     def wait_for_element_appear(self, *locator):
-        self.wait.until(EC.presence_of_element_located(locator))
+        self.driver.wait.until(EC.presence_of_element_located(locator))
 
     def verify_text(self, expected_text, *locator):
         actual_text = self.driver.find_element(*locator).text
